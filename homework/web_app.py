@@ -45,7 +45,7 @@ def index():
 
         df = pd.DataFrame.from_dict(user_values, orient="index").T
 
-        with open("homework/house_predictor.pkl", "rb") as file:
+        with open("../homework/house_predictor.pkl", "rb") as file:
             loaded_model = pickle.load(file)
 
         prediction = round(loaded_model.predict(df)[0][0], 2)
@@ -55,3 +55,5 @@ def index():
 
     return render_template("index.html", prediction=prediction)
 
+if __name__ == "__main__":
+    app.run(debug=True)
